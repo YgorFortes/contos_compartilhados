@@ -6,13 +6,13 @@ import { Server } from "socket.io";
 
 const app = express();
 
-const port = 3000;
+const port = 8000;
 
 //Buscando o caminho atual do projeto
 const caminhoAtual = url.fileURLToPath(import.meta.url);
 
 //Criando o diretorio para a paginas html
-const diretorioPublico = path.join(caminhoAtual, "../..","./public");
+const diretorioPublico = path.join(caminhoAtual, "../..","public");
 
 //Colocando as paginas html em servidor de forma statica
 app.use(express.static(diretorioPublico));
