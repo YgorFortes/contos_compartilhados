@@ -13,7 +13,7 @@ const caminhoAtual = url.fileURLToPath(import.meta.url);
 
 //Criando o diretorio para a paginas html
 const diretorioPublico = path.join(caminhoAtual, "../..","public");
-
+console.log(diretorioPublico)
 //Colocando as paginas html em servidor de forma statica
 app.use(express.static(diretorioPublico));
 
