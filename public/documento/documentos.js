@@ -2,6 +2,7 @@ import {emitirEditorTexto, emitirExcluirDocumento, selecionarDocumento} from './
 const editorTexto = document.getElementById('editor-texto');
 const botaoExcluir = document.getElementById('excluir-documento');
 
+console.log(editorTexto)
 
 //Buscando nome do params da url
 const parametro =  new URLSearchParams(window.location.search);
