@@ -10,7 +10,7 @@ function registrarEventosCadastros(socket, io){
       socket.emit('emitir_cadastro_erro');
     } else {
       const {saltSenha, hashSenha } = criptografarSenha(senha);
-      const novoUsuario = await adicionarUsuario(usuario, hashSenha);
+      const novoUsuario = await adicionarUsuario(usuario, hashSenha, saltSenha);
 
       if(novoUsuario.acknowledged){
         socket.emit('emitir_cadastro_sucesso');
