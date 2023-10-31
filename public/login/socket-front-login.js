@@ -1,3 +1,5 @@
+import { definirCookie } from "../utils/cookies.js";
+
 const socket = io();
 
 function emitirValoresLogin(dadosLogin){
@@ -6,7 +8,8 @@ function emitirValoresLogin(dadosLogin){
 
 socket.on('emitir_login_sucesso', (jwtToken)=>{
   alert('login feito com sucesso!');
-  console.log(jwtToken);
+  definirCookie("jwtToken", jwtToken);
+
   window.location.href ="/";
 })
 
