@@ -1,4 +1,4 @@
-import { emitirValoresLogin } from "./socket-login-front.js";
+import { emitirValoresLogin } from "./socket-front-login.js";
 const formLogin = document.getElementById('form-login');
 
 formLogin.addEventListener("submit", (evento)=>{
