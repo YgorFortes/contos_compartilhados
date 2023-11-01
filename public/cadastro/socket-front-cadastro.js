@@ -11,6 +11,6 @@ socket.on('emitir_cadastro_erro', ()=>{
 
 socket.on('emitir_cadastro_sucesso', ()=>{
   alert('Usuário cadastrado com sucesso!');
-  window.location.href ="/";
+  window.location.href ="../login/index.html";
 })
 export {emitirValoresCadastro}

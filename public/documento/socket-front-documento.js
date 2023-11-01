@@ -1,4 +1,4 @@
-import {aletarERedirecionarExclusao, atualizarEditorTexto,} from "./documentos.js"
+import {aletarERedirecionarExclusao, atualizarEditorTexto, tratarAutorizacaoSucerro, atualizarInterfaceUsuario} from "./documentos.js"
 import { obterCookie } from "../utils/cookies.js";
 const socket = io('/usuarios',{
   auth: {
@@ -6,8 +6,8 @@ const socket = io('/usuarios',{
   }
 });
 
-function selecionarDocumento(nome){
-  socket.emit('selecionar_documento', nome, (texto)=>{
+function selecionarDocumento(dadosEntrada){
+  socket.emit('selecionar_documento', dadosEntrada, (texto)=>{
     atualizarEditorTexto(texto);
   });
 }
@@ -29,10 +29,21 @@ socket.on('excluir_documento_sucessso', (nome)=>{
   aletarERedirecionarExclusao(nome);
 });
 
+
+socket.on('emitir_usuario_autorizado', tratarAutorizacaoSucerro);
+
+
+socket.on('usuarios_no_documento', (usuariosDocumentos)=>{
+  atualizarInterfaceUsuario(usuariosDocumentos)
+})
+
+
+
 socket.on('connect_error', (erro)=>{
   alert(erro)
   window.location.href = "../login/index.html"
 });
+
 
 
 
