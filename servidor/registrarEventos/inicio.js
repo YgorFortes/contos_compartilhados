@@ -9,11 +9,11 @@ function registrarEventosInicio(socket, io){
     const documentoExiste =  await( encontrarDocumento(nomeDocumento)) !== null;
    
     if(documentoExiste){
-      io.emit('documento_existente', nomeDocumento);
+      socket.emit('documento_existente', nomeDocumento);
     }else{
       const documento = await adicionarDocumento(nomeDocumento);
       if(documento.acknowledged){
-        io.emit('adicionar_documento_interface', nomeDocumento)
+        socket.emit('adicionar_documento_interface', nomeDocumento)
       }
     }
   });

@@ -6,9 +6,8 @@ const form = document.getElementById('form-adiciona-documento');
 const inputDocumento = document.getElementById('input-documento');
 const botaoLogout = document.getElementById('botao-logout');
 
-const jwtToken = obterCookie("jwtToken");
 
-console.log(jwtToken)
+
 
 form.addEventListener('submit', (evento)=>{
   evento.preventDefault();
