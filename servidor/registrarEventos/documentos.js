@@ -28,8 +28,9 @@ function registrarEventosDocumentos (socket, io){
  
   socket.on('excluir_documento', async(nomeDocumento)=>{
     const resultado = await excluirDocumento(nomeDocumento);
+    console.log(resultado)
     if(resultado.deletedCount){
-      io.emit('excluir_documento_sucessso', nomeDocumento);;
+      socket.emit('excluir_documento_sucessso', nomeDocumento);;
     }
   })
 }

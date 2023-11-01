@@ -1,5 +1,10 @@
 import {aletarERedirecionarExclusao, atualizarEditorTexto,} from "./documentos.js"
-const socket = io();
+import { obterCookie } from "../utils/cookies.js";
+const socket = io('/usuarios',{
+  auth: {
+    token: obterCookie("jwtToken")
+  }
+});
 
 function selecionarDocumento(nome){
   socket.emit('selecionar_documento', nome, (texto)=>{
@@ -22,7 +27,12 @@ function emitirExcluirDocumento(nome){
 
 socket.on('excluir_documento_sucessso', (nome)=>{
   aletarERedirecionarExclusao(nome);
-})
+});
+
+socket.on('connect_error', (erro)=>{
+  alert(erro)
+  window.location.href = "../login/index.html"
+});
 
 
 
