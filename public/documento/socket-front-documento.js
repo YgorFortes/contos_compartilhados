@@ -37,6 +37,11 @@ socket.on('usuarios_no_documento', (usuariosDocumentos)=>{
   atualizarInterfaceUsuario(usuariosDocumentos)
 })
 
+socket.on('usuario_ja_na_documento', ()=>{
+  alert('Documento já aberto em outra página')
+  window.location.href = "/"
+})
+
 
 
 socket.on('connect_error', (erro)=>{
