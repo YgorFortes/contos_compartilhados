@@ -14,7 +14,7 @@ const nomeDocumento = parametro.get('nome');
 const tituloDocumento = document.getElementById('titulo-documento');
 tituloDocumento.textContent = nomeDocumento;
 
-console.log(nomeDocumento)
+
 
 //emitindo um evento pro back quando a tecla sobe no editor-texto
 editorTexto.addEventListener('keyup', ()=>{
