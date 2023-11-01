@@ -26,9 +26,7 @@ io.of('/').on('connection',  (socket)=> {
   registrarEventosCadastros(socket, io);
   registrarEventosLogin(socket, io);
 
-  socket.on('disconnect', (motivo)=>{
-    console.log(`Cliente id:${socket.id} desconectou. Motivo: ${motivo}`)
-  });
+ 
 });
 
 

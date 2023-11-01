@@ -1,6 +1,8 @@
+
 import {emitirEditorTexto, emitirExcluirDocumento, selecionarDocumento} from './socket-front-documento.js'
 const editorTexto = document.getElementById('editor-texto');
 const botaoExcluir = document.getElementById('excluir-documento');
+const listarUsuariosConectados = document.getElementById('usuarios-conectados');
 
 
 
@@ -12,7 +14,7 @@ const nomeDocumento = parametro.get('nome');
 const tituloDocumento = document.getElementById('titulo-documento');
 tituloDocumento.textContent = nomeDocumento;
 
-selecionarDocumento(nomeDocumento);
+console.log(nomeDocumento)
 
 //emitindo um evento pro back quando a tecla sobe no editor-texto
 editorTexto.addEventListener('keyup', ()=>{
@@ -38,5 +40,21 @@ function aletarERedirecionarExclusao(nome){
   }
 }
 
-export  {atualizarEditorTexto, aletarERedirecionarExclusao}
+function tratarAutorizacaoSucerro(nomeUsuario){
+  selecionarDocumento({nomeDocumento, nomeUsuario});
+}
+
+function atualizarInterfaceUsuario(usuariosDocumentos){
+  listarUsuariosConectados.innerHTML = "";
+
+  usuariosDocumentos.forEach((usuario)=>{
+    listarUsuariosConectados.innerHTML += `
+    <li class="list-group-item">${usuario}</li>
+    ` 
+  });
+
+}
+
+
+export  {atualizarEditorTexto, aletarERedirecionarExclusao, tratarAutorizacaoSucerro, atualizarInterfaceUsuario}
 
